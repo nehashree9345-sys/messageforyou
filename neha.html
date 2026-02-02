@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>sorry❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #ffd6e0, #ff8fab, #c9184a);
+  overflow: hidden;
+  color: white;
+}
+
+/* sections */
+.section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.section.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+
+/* card */
+.card {
+  max-width: 700px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(14px);
+  border-radius: 30px;
+  padding: 45px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.35);
+}
+
+h1 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* buttons */
+button {
+  margin-top: 25px;
+  padding: 14px 38px;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #fff, #ffe5ec);
+  color: #c9184a;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(255,255,255,0.4);
+}
+
+/* whatsapp button */
+.whatsapp {
+  background: linear-gradient(135deg, #25D366, #1ebe5d);
+  color: white;
+}
+
+/* hearts */
+.heart {
+  position: absolute;
+  bottom: -10vh;
+  color: rgba(255,255,255,0.85);
+  animation: floatUp 7s linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* progress */
+.progress {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+}
+
+.dot.active {
+  background: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECTION 1 -->
+<div class="section active">
+  <div class="card">
+    <h1>Daii erumaa...</h1>
+    <p>I'm soo sorry❤️, naa nalla yosichen.</p>
+    <p>Naa tha thappu.</p>
+    <p>Enaku puriyudhu.</p>
+    <button onclick="next()">next pooo</button>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+  <div class="card">
+    <h1>I Messed Up</h1>
+    <p>I know I hurt you.</p>
+    <p>And I hate that I was the reason</p>
+    <p>behind your silence.</p>
+    <button onclick="next()">sorryyy...</button>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+  <div class="card">
+    <h1>Excuse la vena</h1>
+    <p>I’m not here to explain.</p>
+    <p>I’m not here to justify.</p>
+    <p>I’m here to take responsibility.</p>
+    <button onclick="next()">sorryyy...</button>
+  </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+  <div class="card">
+    <h1>I miss you❤️</h1>
+    <p>No matter what.</p>
+    <p>I'm always there for you.</p>
+    <p>You are always special to me.</p>
+    <button onclick="next()">sorry da</button>
+  </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+  <div class="card">
+    <h1>Balajii soryyyy</h1>
+    <p>Not just for what I did.</p>
+    <p>But for how it made you feel.</p>
+    <p>I promise to do better.</p>
+    <button onclick="forgive()">I’m Sorry💗</button>
+  </div>
+</div>
+
+<!-- SECTION 6 -->
+<div class="section">
+  <div class="card">
+    <h1>Thank You...</h1>
+    <p>For listening.</p>
+    <p>For staying.</p>
+    <p>For being you.</p>
+    <p>okie na matum keela iruka</p>
+    <p>button click pannu</p>
+
+    <button class="whatsapp" onclick="goWhatsApp()">sorry ok na apdiyee oru hug uh</button>
+  </div>
+</div>
+
+<!-- progress -->
+<div class="progress" id="progress"></div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+let index = 0;
+
+/* progress dots */
+const progress = document.getElementById("progress");
+sections.forEach((_, i) => {
+  const d = document.createElement("div");
+  d.className = "dot" + (i === 0 ? " active" : "");
+  progress.appendChild(d);
+});
+
+function updateProgress() {
+  document.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle("active", i === index);
+  });
+}
+
+function next() {
+  sections[index].classList.remove("active");
+  index++;
+  sections[index].classList.add("active");
+  updateProgress();
+}
+
+function forgive() {
+  next();
+  softHearts();
+}
+
+/* WhatsApp redirect */
+function goWhatsApp() {
+  const phoneNumber = "919345929279"; // 🔴 CHANGE THIS
+  const message = "paravala dii thangooo";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+/* floating hearts */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = Math.random() * 22 + 14 + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 7000);
+}, 400);
+
+/* gentle burst */
+function softHearts() {
+  for (let i = 0; i < 25; i++) {
+    setTimeout(() => {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.innerHTML = "💖";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.fontSize = "28px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 6000);
+    }, i * 120);
+  }
+}
+</script>
+
+</body>
+</html>
